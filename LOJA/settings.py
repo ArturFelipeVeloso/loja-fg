@@ -137,12 +137,10 @@ else:
 
 
 # HEROKU
-abspath = lambda *p: os.path.abspath(os.path.join(*p))
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-PROJECT_ROOT = abspath(os.path.dirname(__file__))
-
-MEDIA_ROOT = abspath(PROJECT_ROOT, 'media')
-MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_URL = '/static/'
 # HEROKU
 
 #MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
