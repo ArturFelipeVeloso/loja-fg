@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} {{ block.super }} Todos {% endblock title %}
+
+{% block nav %}
+    {{ block.super }}
+        <li class="active">Todos os Produtos</li>
+        <li>
+            <a href="/add/">Adicionar novo Produto</a>
+        </li>
+    {% endblock nav %}
+
+{% block body %}
+    <!-- <ul>
+        {% for o in object_list %}
+        <li>{{ o.name }}
+            <a href="/detail/{{o.id}}">Ver</a>
+            <a href="/edit/{{o.id}}">Editar</a>
+            <a href="/delete/{{o.id}}">Excluir</a>
+        </li>
+        {% endfor %}
+    </ul> -->
+
+    <!-- <a href="/add/">Add</a> -->
+
+    <!-- Col -->
+    <div class="col-md-12" role="main">
+        <div class="bs-example" data-example-id="thumbnails-with-custom-content">
+            <div class="row">
+
+                {% for o in object_list %}
+                    <div class="col-sm-6 col-md-3" style="height:80%">
+                        <div class="thumbnail">
+                            <img alt="{{o.name}}" src="{%if o.picture %}{{o.picture.url}}{%else%}{% static 'img/default-img.gif' %}{% endif %}"
+                              style="height: 200px; width: 100%; display: block;">
+                            <div class="caption">
+                                <center>
+                                <h3>{{ o.name }}</h3>
+                                <h4>R${{ o.price }}</h4>
+                                <!-- <p><b>Descrição do Produto:</b></p>
+                                <p>{{ o.description }}.</p> -->
+
+                                <p>
+                                    <a href="/detail/{{o.id}}" class="btn btn-primary" role="button">Ver</a>
+                                    <a href="/edit/{{o.id}}" class="btn btn-warning" role="button">Editar</a>
+                                    <a href="/delete/{{o.id}}" class="btn btn-danger" role="button">Excluir</a>
+                                    <!-- <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#confirm" product="{{o}}">Confirmação</button> -->
+                                </p>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock body %}
